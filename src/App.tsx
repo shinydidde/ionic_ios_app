@@ -49,10 +49,8 @@ const App: React.FC = () => {
           <Route exact path="/">
             <Tab1 />
           </Route>
-          <Route path="/tab3">
-            <Tab3 prevUrl={`/room/:id`}/>
-          </Route>
           <Route path={`/room/:id`} component={Tab2} />
+          <Route path={`/room/review`} component={Tab3}/>
           <Route path='/addRoom' component={AddRoomPage} />
           <Route component={NotFoundPage} />
         </IonRouterOutlet>

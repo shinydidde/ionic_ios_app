@@ -9,15 +9,20 @@ import './Tab2.css';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { fastFood, flame, paw, star, starHalfOutline, tv, wifi } from 'ionicons/icons';
 import { useState } from 'react';
-import { useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 interface LocationState {
   room?: any; // Define the room property with type 'any'
 }
 
 const Tab2: React.FC = () => {
+  const history = useHistory();
   const location = useLocation<LocationState>(); // Specify the type of the location state
   const room = location.state?.room; // Access the room details passed as props
+
+  const handleNavigate = (room: any) => {
+    history.push('/room/review', {room}); // Navigate to the next page with selected room details
+};
 
   return (
     <IonPage>
@@ -89,7 +94,7 @@ const Tab2: React.FC = () => {
               <p>{room.RoomDesc}</p>
             </IonRow>
             <IonRow>
-              <IonButton href='/tab3'>Add Review</IonButton>
+              <IonButton onClick={()=>handleNavigate(room.RoomNo)}>Add Review</IonButton>
             </IonRow>
           </IonGrid>
         </IonContent>

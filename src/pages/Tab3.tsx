@@ -4,14 +4,17 @@ import { app } from '../firebaseUtils/firebaseConfig'; // Import your Firebase c
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './Tab3.css';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 
 const storage = getStorage(app);
 
-interface Tab3Props {
-  prevUrl: string;
+interface LocationState {
+  room?: any; // Define the room property with type 'any'
 }
 
-const Tab3: React.FC<Tab3Props> = ({ prevUrl }) => {
+const Tab3: React.FC = () => {
+  const location = useLocation<LocationState>(); // Specify the type of the location state
+  const room = location.state?.room; // Access the room details passed as props
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string>('');
 
@@ -56,7 +59,7 @@ const Tab3: React.FC<Tab3Props> = ({ prevUrl }) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref={prevUrl || "/"} />
+            <IonBackButton defaultHref={ '/room/'+room} />
           </IonButtons>
           <IonTitle>Add Review</IonTitle>
         </IonToolbar>

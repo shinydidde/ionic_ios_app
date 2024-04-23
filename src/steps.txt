@@ -1,0 +1,17 @@
+npx cap add ios
+npx capacitor-assets generate
+ionic build
+ionic cap sync ios
+npx cap open ios
+
+
+plist
+
+Add the NSPhotoLibraryUsageDescription key:
+Click on the Info.plist file to open it in the editor. Right-click anywhere in the editor and select "Add Row" from the context menu. Then, enter Privacy - Photo Library Usage Description as the key.
+
+<key>NSPhotoLibraryUsageDescription</key>
+<string>App needs access to the photo library to save photos taken with the camera.</string>
+<key>NSCameraUsageDescription</key>
+<string>Your app needs access to the camera to take photos.</string>
+

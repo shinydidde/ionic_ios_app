@@ -27,3 +27,12 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+.DS_Store
+/dist
+/ios
+/android
+package-lock.json
+
+- App/Podfile.lock
++ App/output
